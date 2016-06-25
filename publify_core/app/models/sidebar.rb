@@ -41,10 +41,6 @@ class Sidebar < ApplicationRecord
         default
       end
     end
-
-    send(:define_method, "#{key}=") do |newval|
-      config[key] = newval
-    end
   end
 
   def self.fields
