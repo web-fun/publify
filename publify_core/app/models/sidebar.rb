@@ -58,6 +58,10 @@ class Sidebar < ApplicationRecord
     configuration.fields
   end
 
+  def to_locals_hash
+    configuration.to_locals_hash
+  end
+
   def publish
     self.active_position = staged_position
   end
