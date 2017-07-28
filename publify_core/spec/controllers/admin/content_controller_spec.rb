@@ -175,8 +175,8 @@ describe Admin::ContentController, type: :controller do
         expect(new_article.body).to eq body
         expect(new_article.extended).to eq extended
         expect(new_article.text_filter.name).to eq @user.text_filter.name
-        expect(new_article.html(:body)).to eq '<p>body via <em>markdown</em></p>'
-        expect(new_article.html(:extended)).to eq '<p><em>foo</em></p>'
+        expect(new_article.html(:body)).to eq "<p>body via <em>markdown</em></p>\n"
+        expect(new_article.html(:extended)).to eq "<p><em>foo</em></p>\n"
       end
 
       context 'with a previously autosaved draft' do

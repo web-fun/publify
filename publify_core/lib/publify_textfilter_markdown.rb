@@ -1,5 +1,5 @@
 require 'text_filter_plugin'
-require 'bluecloth'
+require 'commonmarker'
 
 # TODO: Move to a different namespace
 class PublifyApp
@@ -33,11 +33,7 @@ is available from the author's site, but here's a short summary:
       end
 
       def self.filtertext(text)
-        # FIXME: Workaround for BlueCloth not interpreting <publify:foo> as an
-        # HTML tag. See <http://deveiate.org/projects/BlueCloth/ticket/70>.
-        escaped_macros = text.gsub(%r{(</?publify):}, '\1X')
-        html = BlueCloth.new(escaped_macros).to_html.gsub(%r{</?notextile>}, '')
-        html.gsub(%r{(</?publify)X}, '\1:')
+        html = CommonMarker.render_html(text, :DEFAULT)
       end
     end
   end
