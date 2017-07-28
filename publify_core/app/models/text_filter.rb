@@ -39,11 +39,12 @@ class TextFilter < ActiveRecord::Base
     filter_types['macropost'].sort_by(&:short_name).each { |f| help.push f }
     filters.each { |f| help.push(filter_map[f.to_s]) }
 
-    help_text = help.map do |f|
-      if f.help_text.blank?
-       ''
+    help_text = help.map do |filter|
+      text = filter.help_text
+      if text.blank?
+        ''
       else
-        "<h3>#{f.display_name}</h3>\n#{CommonMarker.render_html(f.help_text, :DEFAULT)}"
+        "<h3>#{f.display_name}</h3>\n#{CommonMarker.render_html(text, :DEFAULT)}"
       end
     end
 
@@ -54,10 +55,11 @@ class TextFilter < ActiveRecord::Base
     filter_map = TextFilterPlugin.filter_map
 
     help = [filter_map[markup]]
-    filters.each { |f| help.push(filter_map[f.to_s]) }
+    filters.each { |filter| help.push(filter_map[filter.to_s]) }
 
-    help_text = help.map do |f|
-      f.help_text.blank? ? '' : CommonMarker.render_html(f.help_text)
+    help_text = help.map do |filter|
+      text = filter.help_text
+      text.blank? ? '' : CommonMarker.render_html(text)
     end.join("\n")
 
     help_text

@@ -33,7 +33,7 @@ is available from the author's site, but here's a short summary:
       end
 
       def self.filtertext(text)
-        html = CommonMarker.render_html(text, :DEFAULT)
+        CommonMarker.render_html(text, :DEFAULT)
       end
     end
   end
