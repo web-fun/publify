@@ -66,18 +66,15 @@ end
 
       expects_markdown = <<-EOF.strip_heredoc
         <p><em>header text here</em></p>
-
         <div class=\"CodeRay\"><pre><span class=\"CodeRay\"><span class=\"keyword\">class</span> <span class=\"class\">test</span>
           <span class=\"keyword\">def</span> <span class=\"function\">method</span>
             <span class=\"string\"><span class=\"delimiter\">&quot;</span><span class=\"content\">foo</span><span class=\"delimiter\">&quot;</span></span>
           <span class=\"keyword\">end</span>
         <span class=\"keyword\">end</span></span></pre></div>
-
-
         <p><em>footer text here</em></p>
       EOF
 
-      expects_textile = <<-EOF.strip_heredoc
+      expects_textile = <<-EOF.strip_heredoc.strip
         <p><strong>header text here</strong></p>
         <div class=\"CodeRay\"><pre><span class=\"CodeRay\"><span class=\"keyword\">class</span> <span class=\"class\">test</span>
           <span class=\"keyword\">def</span> <span class=\"function\">method</span>
@@ -87,8 +84,8 @@ end
         <p><em>footer text here</em></p>
       EOF
 
-      assert_equal expects_markdown.strip, filter_text(text, [:macropre, :markdown, :macropost])
-      assert_equal expects_textile.strip, filter_text(text, [:macropre, :textile, :macropost])
+      assert_equal expects_markdown, filter_text(text, [:macropre, :markdown, :macropost])
+      assert_equal expects_textile, filter_text(text, [:macropre, :textile, :macropost])
     end
   end
 end
