@@ -33,7 +33,9 @@ is available from the author's site, but here's a short summary:
       end
 
       def self.filtertext(text)
-        CommonMarker.render_html(text, :DEFAULT).gsub(%r{</?notextile>}, '')
+        escaped_macros = text.gsub(%r{(</?publify):}, '\1X')
+        html = CommonMarker.render_html(escaped_macros, :DEFAULT).gsub(%r{</?notextile>}, '')
+        html.gsub(%r{(</?publify)X}, '\1:').strip
       end
     end
   end

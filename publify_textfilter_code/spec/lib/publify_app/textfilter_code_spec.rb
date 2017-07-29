@@ -64,7 +64,7 @@ end
 
       EOF
 
-      expects_markdown = <<-EOF.strip_heredoc
+      expects_markdown = <<-EOF.strip_heredoc.strip
         <p><em>header text here</em></p>
         <div class=\"CodeRay\"><pre><span class=\"CodeRay\"><span class=\"keyword\">class</span> <span class=\"class\">test</span>
           <span class=\"keyword\">def</span> <span class=\"function\">method</span>
