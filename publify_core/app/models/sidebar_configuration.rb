@@ -41,8 +41,7 @@ class SidebarConfiguration
     end
   end
 
-  def parse_request(_contents, _params)
-  end
+  def parse_request(_contents, _params); end
 
   class << self
     attr_writer :fields

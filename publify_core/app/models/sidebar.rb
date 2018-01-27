@@ -42,25 +42,15 @@ class Sidebar < ApplicationRecord
     @configuration ||= configuration_class.new(config)
   end
 
-  def content_partial
-    configuration.content_partial
-  end
+  delegate :content_partial, to: :configuration
 
-  def display_name
-    configuration.display_name
-  end
+  delegate :display_name, to: :configuration
 
-  def description
-    configuration.description
-  end
+  delegate :description, to: :configuration
 
-  def fields
-    configuration.fields
-  end
+  delegate :fields, to: :configuration
 
-  def to_locals_hash
-    configuration.to_locals_hash
-  end
+  delegate :to_locals_hash, to: :configuration
 
   def publish
     self.active_position = staged_position
@@ -70,9 +60,7 @@ class Sidebar < ApplicationRecord
     short_name + '-' + id.to_s
   end
 
-  def parse_request(contents, params)
-    configuration.parse_request(contents, params)
-  end
+  delegate :parse_request, to: :configuration
 
   def admin_state
     return :active if active_position && (staged_position == active_position || staged_position.nil?)
