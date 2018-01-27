@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'xml_sidebar/_content.html.erb', type: :view do
-  let(:sidebar) { XmlSidebar.new }
+  let(:sidebar) { Sidebar.new(type: 'XmlSidebar', blog: Blog.new, config: config) }
+  let(:config) { {} }
 
   context 'by default' do
     before do
@@ -31,8 +32,9 @@ RSpec.describe 'xml_sidebar/_content.html.erb', type: :view do
   end
 
   context 'on a tags page' do
+    let(:config) { { 'tag_feeds' => true } }
+
     before do
-      sidebar.tag_feeds = true
       allow(controller).to receive(:controller_name).and_return 'tags'
       allow(controller).to receive(:action_name).and_return 'show'
       @tag = create :tag
