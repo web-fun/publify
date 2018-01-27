@@ -39,6 +39,9 @@ group :development, :test do
   gem 'i18n-tasks', '~> 0.9.1', require: false
   gem 'rspec-rails', '~> 3.4'
   gem 'simplecov', '~> 0.15.1', require: false
+
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', '~> 9.0'
 end
 
 group :development do
@@ -52,9 +55,6 @@ group :development do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
-
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', '~> 9.0'
 end
 
 group :test do
