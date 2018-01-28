@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
+ruby '2.5.1'
+
 gem 'rails', '~> 5.2.0'
 
-gem 'mysql2'
 gem 'pg'
-gem 'sqlite3'
+gem 'rails_12factor'
 
 # Store sessions in the database
 gem 'activerecord-session_store', '~> 1.1.0'
